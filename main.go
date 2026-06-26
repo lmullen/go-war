@@ -15,6 +15,10 @@ var titleGraphic = `
 `
 
 func main() {
+
+	// The deck of cards is not shuffled at this point
+	deck := war.NewDeck()
+
 	fmt.Println("Paul and Daddy's cool game: War!!!")
 	fmt.Println(titleGraphic)
 	fmt.Println("")
@@ -22,7 +26,7 @@ func main() {
 	fmt.Println("")
 	fmt.Println("Here is the deck of cards:")
 
-	for _, card := range war.Deck {
+	for _, card := range deck {
 		fmt.Printf("%s, ", card)
 	}
 	fmt.Println()

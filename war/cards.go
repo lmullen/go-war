@@ -1,3 +1,4 @@
+// war contains the logic for the deck of cards and gameplay
 package war
 
 import "fmt"
@@ -9,7 +10,7 @@ var suits = []string{
 	"\u2667", // ♧ club
 }
 
-// Aces high
+// Aces are high so ranks run from the numbers on the face cards to 11-14 for face cards
 var ranks = []int{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}
 
 var faces = []string{"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}
@@ -27,16 +28,16 @@ func (c Card) String() string {
 	return fmt.Sprintf("%s%s", c.Face, c.Suit)
 }
 
-var Deck []Card
+// A Deck is just a slice of cards
+type Deck []Card
 
-func init() {
-
-	// Create the deck of cards
-	var card Card
+// NewDeck creates an unshuffled deck
+func NewDeck() Deck {
+	deck := make(Deck, 0, 52)
 	for _, suit := range suits {
 		for i, face := range faces {
-			card = Card{suit, face, ranks[i]}
-			Deck = append(Deck, card)
+			deck = append(deck, Card{suit, face, ranks[i]})
 		}
 	}
+	return deck
 }
